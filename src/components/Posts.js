@@ -2,7 +2,7 @@ import React from 'react'
 import PostsList from './PostsList'
 import { fetchMainPosts } from '../utils/api'
 
-export default class Top extends React.Component {
+export default class Posts extends React.Component {
     constructor(props) {
         super(props)
 
@@ -14,7 +14,7 @@ export default class Top extends React.Component {
         this.isLoading = this.isLoading.bind(this)    
     }
     componentDidMount() {
-      const type = 'top';
+      const type = this.props.type;
       fetchMainPosts(type)
         .then((posts) => this.setState({
           posts,
@@ -36,7 +36,6 @@ export default class Top extends React.Component {
 
       return (
         <React.Fragment>
-        <h2>Top</h2>  
         {this.isLoading() && <p>LOADING</p>}
 
         {error && <p>{error}</p>}

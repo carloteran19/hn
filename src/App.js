@@ -1,12 +1,13 @@
 import React from 'react'
-import Top from './components/Top'
-import New from './components/New'
+import Posts from './components/Posts'
+import User from './components/User'
+import Post from './components/Post'
 
 
 function App() {
   return (
     <div className="container">
-      <Top />
+      <Post  id={'25498364'}/>
     </div>
   );
 }
