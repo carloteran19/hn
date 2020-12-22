@@ -1,4 +1,5 @@
 import React from 'react'
+import Loading from './Loading'
 import CommentsList from './CommentsList'
 import PostInfo from './PostInfo'
 import { fetchItem, fetchComments } from '../utils/api'
@@ -51,11 +52,11 @@ export default class User extends React.Component {
         {error && <p>{error}</p>}
 
         {loadingPost === true
-          ? <p>Loading...</p>
+          ? <Loading />
           : <PostInfo post={post}/>}
 
         {loadingComments === true
-          ? <p>Loading...</p>
+          ? <Loading />
           : <CommentsList comments={comments}/>}  
         </React.Fragment>
       )  

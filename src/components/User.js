@@ -1,6 +1,7 @@
 import React from 'react'
 import PostsList from './PostsList'
 import UserInfo from './UserInfo'
+import Loading from './Loading'
 import { fetchUser, fetchPosts } from '../utils/api'
 
 export default class User extends React.Component {
@@ -51,12 +52,12 @@ export default class User extends React.Component {
         {error && <p>{error}</p>}
 
         {loadingUser === true
-          ? <p>Loading...</p>
+          ? <Loading />
           : <UserInfo user={user}/>}
 
         <h1>Posts</h1>
         {loadingPosts === true
-          ? <p>Loading...</p>
+          ? <Loading />
           : <PostsList posts={posts}/>}  
         </React.Fragment>
       )  

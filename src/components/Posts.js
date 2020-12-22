@@ -1,5 +1,6 @@
 import React from 'react'
 import PostsList from './PostsList'
+import Loading from './Loading'
 import { fetchMainPosts } from '../utils/api'
 
 export default class Posts extends React.Component {
@@ -36,7 +37,7 @@ export default class Posts extends React.Component {
 
       return (
         <React.Fragment>
-        {this.isLoading() && <p>LOADING</p>}
+        {this.isLoading() && <Loading />}
 
         {error && <p>{error}</p>}
 
