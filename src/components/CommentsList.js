@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { formatDate } from '../utils/helpers'
+import { NavLink } from 'react-router-dom'
 
 export default function CommentsList ({ comments }) {
   return (
@@ -8,7 +9,7 @@ export default function CommentsList ({ comments }) {
       {comments.map((comment) => {
          return (
             <div className='comment'>
-              <span>by {comment.by}</span>
+              <span>by  <NavLink to={`/user?id=${comment.by}`} className='link'> {comment.by} </NavLink></span>
               <span>on {formatDate(comment.time)}</span>
               <p dangerouslySetInnerHTML={{__html: comment.text}} />
             </div>

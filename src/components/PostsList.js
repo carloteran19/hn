@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { formatDate } from '../utils/helpers'
+import { NavLink } from 'react-router-dom'
 
 export default function PostsList ({ posts }) {
   return (
@@ -7,9 +9,11 @@ export default function PostsList ({ posts }) {
       {posts.map((post) => {
          return (
            <li key={post.id} className="post">
-             <a className="link" href="">{post.title}</a>
+             <a className="link" href={post.url}>{post.title}</a>
              <div className="meta-info-light">
-               <span>by {post.by} on {post.time} with {post.descendants} comments.</span>
+               <span>by <NavLink to={`/user?id=${post.by}`} className='link'> {post.by} </NavLink> </span>
+               <span>on {formatDate(post.time)} </span>
+               <span>with <NavLink to={`/post?id=${post.id}`} className='link'> {post.descendants} </NavLink> comments.</span>
              </div>
            </li>
          ) 

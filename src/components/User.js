@@ -3,6 +3,7 @@ import PostsList from './PostsList'
 import UserInfo from './UserInfo'
 import Loading from './Loading'
 import { fetchUser, fetchPosts } from '../utils/api'
+import queryString from 'query-string'
 
 export default class User extends React.Component {
     constructor(props) {
@@ -17,7 +18,8 @@ export default class User extends React.Component {
         }   
     }
     componentDidMount() {
-      const id = this.props.id;
+      const values = queryString.parse(this.props.location.search)
+      const id = values.id;
 
       fetchUser(id)
         .then((user) => {

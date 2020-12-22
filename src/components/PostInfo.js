@@ -2,20 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { formatDate } from '../utils/helpers'
 import { ThemeConsumer } from '../contexts/theme'
+import { NavLink } from 'react-router-dom'
 
 export default function PostInfo ({ post }) {
   return (
     <ThemeConsumer>
       {({ theme }) => (
         <div className={`meta-info-${theme}`}>
-          <h1 className='header'>{post.title}</h1>
-          <span>by {post.by}</span>
+          <a className='link' href={post.url}><h1 className='header'>{post.title}</h1></a>
+          <span>by <NavLink to={`/user?id=${post.by}`} className='link'> {post.by} </NavLink> </span>
           <span>on {formatDate(post.time)}</span>
-          {typeof post.descendants === 'number' && (
-            <span>
-              with {post.descendants} comments
-            </span>
-          )}
+          <span>with <NavLink to={`/post?id=${post.id}`} className='link'> {post.descendants} </NavLink> comments.</span>
         <p dangerouslySetInnerHTML={{__html: post.text}} />
         </div>
       )}
